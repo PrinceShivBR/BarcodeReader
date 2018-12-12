@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">BarcodeReader</string>
     <string name="start_scanning">Start Scanning</string>
+    <string name="backup_db">Backup DB</string>
+    <string name="done">Done</string>
+    <string name="save">Save</string>
+    <string name="capture">Capture</string>
+    <string name="retake">Retake</string>
 </resources>
