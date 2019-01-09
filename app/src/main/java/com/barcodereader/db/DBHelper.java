@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
 
-import com.barcodereader.BarcodeImageModel;
+import com.barcodereader.model.BarcodeImageModel;
 
 /**
  * Created by shivappa.battur on 10/12/2018

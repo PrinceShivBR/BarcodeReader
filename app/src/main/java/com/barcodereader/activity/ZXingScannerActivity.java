@@ -1,4 +1,4 @@
-package com.barcodereader;
+package com.barcodereader.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;

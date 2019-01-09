@@ -1,4 +1,4 @@
-package com.barcodereader;
+package com.barcodereader.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.barcodereader.R;
 import com.barcodereader.utils.FileUtils;
 
 import java.io.File;

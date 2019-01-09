@@ -1,4 +1,4 @@
-package com.barcodereader;
+package com.barcodereader.activity;
 
 import android.Manifest;
 import android.content.DialogInterface;
@@ -12,6 +12,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
+import com.barcodereader.R;
 import com.barcodereader.utils.PermissionUtils;
 
 /**

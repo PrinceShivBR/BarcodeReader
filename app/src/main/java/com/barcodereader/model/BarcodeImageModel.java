@@ -1,4 +1,4 @@
-package com.barcodereader;
+package com.barcodereader.model;
 
 /**
  * Created by shivappa.battur on 10/12/2018
@@ -8,7 +8,7 @@ public class BarcodeImageModel {
     private String imagePath;
     private int imageCount;
 
-    BarcodeImageModel(String barcodeValue, String imagePath, int imageCount) {
+    public BarcodeImageModel(String barcodeValue, String imagePath, int imageCount) {
         this.barcodeValue = barcodeValue;
         this.imagePath = imagePath;
         this.imageCount = imageCount;

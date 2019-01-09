@@ -1,7 +1,9 @@
-package com.barcodereader;
+package com.barcodereader.activity;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.hardware.Camera;
 import android.hardware.SensorManager;
 import android.media.MediaPlayer;
@@ -16,6 +18,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.barcodereader.R;
+import com.barcodereader.model.BarcodeImageModel;
+import com.barcodereader.helper.CameraPreview;
+import com.barcodereader.helper.OrientationManager;
 import com.barcodereader.db.DBHelper;
 import com.barcodereader.utils.FileUtils;
 
@@ -69,6 +75,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
         scannedResult = intent.getStringExtra("result");
         if (isCameraAvailable()) {
             mCamera = getCameraInstance();
+            setFocus();
             preview = new CameraPreview(this, mCamera);
             mLayout.addView(preview);
             orientationManager = new OrientationManager(CameraActivity.this, SensorManager.SENSOR_DELAY_NORMAL, this);
@@ -95,6 +102,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
 
     public void setFocus() {
         Camera.Parameters params = mCamera.getParameters();
+        params.setJpegQuality(50);
         if (params.getSupportedFocusModes().contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)) {
             params.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
         } else {
@@ -121,6 +129,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
                 mLayout.removeAllViews();
                 if (isCameraAvailable()) {
                     mCamera = getCameraInstance();
+                    setFocus();
                     preview = new CameraPreview(CameraActivity.this, mCamera);
                     // screen will stay on for this view
                     preview.setKeepScreenOn(true);
@@ -186,6 +195,9 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
                 File outputFile = createImageFile();
 
                 FileOutputStream outStream;
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inJustDecodeBounds = true;
+                Bitmap bitmap;
                 try {
                     outStream = new FileOutputStream(outputFile);
                     outStream.write(cameraData);
@@ -220,7 +232,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
         String imageFolder = rootFolder + "images/";
         FileUtils.getInstance().createDirectory(imageFolder);
 //        imgCount = DBHelper.getInstance(this).getMediaCount(scannedResult);
-        File image = new File(imageFolder + "IMG" + "_" + imgCount + "_" + timeStamp + ".jpg");
+        File image = new File(imageFolder + scannedResult + "_" + imgCount + "_" + timeStamp + ".jpg");
 
         // Save a file: path for use with ACTION_VIEW intents
         mCurrentPhotoPath = image.getAbsolutePath();

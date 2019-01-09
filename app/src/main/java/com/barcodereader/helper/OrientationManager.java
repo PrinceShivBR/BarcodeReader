@@ -1,4 +1,4 @@
-package com.barcodereader;
+package com.barcodereader.helper;
 
 import android.content.Context;
 import android.view.OrientationEventListener;
