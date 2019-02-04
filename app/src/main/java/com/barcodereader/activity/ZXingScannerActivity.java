@@ -15,7 +15,6 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
  */
 public class ZXingScannerActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler {
     private ZXingScannerView scannerView;
-    static final int REQUEST_IMAGE_CAPTURE = 1000;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,22 +46,10 @@ public class ZXingScannerActivity extends AppCompatActivity implements ZXingScan
     @Override
     public void handleResult(final com.google.zxing.Result result) {
         if (result != null) {
-            final Intent cameraIntent = new Intent(this, CameraActivity.class);
-            if (cameraIntent.resolveActivity(getPackageManager()) != null) {
-                AlertDialog dialog = new AlertDialog.Builder(this)
-                        .setTitle("Scan Result")
-                        .setMessage(result.getText() + " - captured image will be saved by this result")
-                        .setCancelable(false)
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                cameraIntent.putExtra("result", result.getText());
-                                startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
-                            }
-                        })
-                        .create();
-                dialog.show();
-            }
+            final Intent cameraIntent = new Intent(this, MainActivity.class);
+            cameraIntent.putExtra("result", result.getText());
+            startActivity(cameraIntent);
+            finish();
 
         } else {
             Toast.makeText(this, "No information found", Toast.LENGTH_SHORT).show();

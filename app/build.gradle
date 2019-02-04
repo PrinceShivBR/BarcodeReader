@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     buildToolsVersion '28.0.3'
+    dataBinding.enabled true
     defaultConfig {
         applicationId "com.barcodereader"
         minSdkVersion 17
@@ -20,12 +21,8 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'me.dm7.barcodescanner:zxing:1.9.8'
-    //zxing lib dependency
-//    implementation('me.dm7.barcodescanner:zxing:1.9.8') {
-//        transitive = false
-//    }
-
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 }

@@ -1,9 +1,40 @@
 <resources>
     <string name="app_name">BarcodeReader</string>
-    <string name="start_scanning">Start Scanning</string>
     <string name="backup_db">Backup DB</string>
     <string name="done">Done</string>
     <string name="save">Save</string>
     <string name="capture">Capture</string>
     <string name="retake">Retake</string>
+
+    <!--main activity strings-->
+    <string name="barcode">Barcode</string>
+    <string name="start_scanning">Scan</string>
+    <string name="product_name">Product Name</string>
+    <string name="brand_name">Brand Name</string>
+    <string name="company_name">Company Name</string>
+    <string name="mrp">MRP</string>
+    <string name="capture_image">Capture Image</string>
+    <string name="refresh">Refresh</string>
+    <string name="exit">Exit</string>
+
+    <!--spinner values-->
+    <string-array name="weight">
+        <item>Wieght</item>
+    </string-array>
+
+    <string-array name="unit">
+        <item>Unit</item>
+    </string-array>
+
+    <string-array name="sub_category">
+        <item>Sub Category</item>
+    </string-array>
+
+    <string-array name="parent_category">
+        <item>Parent Category</item>
+    </string-array>
+
+    <string-array name="family">
+        <item>Family</item>
+    </string-array>
 </resources>

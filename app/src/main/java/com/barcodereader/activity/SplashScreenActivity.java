@@ -41,6 +41,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     private void openHome() {
         startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
+        finish();
     }
 
     private void requestPermission() {

@@ -37,12 +37,10 @@ import java.util.Date;
 public class CameraActivity extends AppCompatActivity implements View.OnClickListener, OrientationManager.OrientationListener {
     private static final String TAG = CameraActivity.class.getSimpleName();
     private ImageView mIvSave, mIvCapture, mIvRecapture;
-    private Button mBtnClose;
     private RelativeLayout mLayout;
     private Camera mCamera;
     private byte[] cameraData;
     private CameraPreview preview;
-    private OrientationManager orientationManager;
     private OrientationManager.ScreenOrientation orientation;
     private String mCurrentPhotoPath;
     int captureAngle;
@@ -67,7 +65,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
         mIvCapture.setOnClickListener(this);
         mIvRecapture = findViewById(R.id.iv_retake);
         mIvRecapture.setOnClickListener(this);
-        mBtnClose = findViewById(R.id.btn_done);
+        Button mBtnClose = findViewById(R.id.btn_done);
         mBtnClose.setOnClickListener(this);
         mLayout = findViewById(R.id.rl);
 
@@ -78,7 +76,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
             setFocus();
             preview = new CameraPreview(this, mCamera);
             mLayout.addView(preview);
-            orientationManager = new OrientationManager(CameraActivity.this, SensorManager.SENSOR_DELAY_NORMAL, this);
+            OrientationManager orientationManager = new OrientationManager(CameraActivity.this, SensorManager.SENSOR_DELAY_NORMAL, this);
             if (orientationManager.canDetectOrientation()) {
                 orientationManager.enable();
             }
